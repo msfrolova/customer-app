@@ -17,5 +17,6 @@ repositories {
 dependencies {
 	compile group: 'org.springframework', name: 'spring-web', version: springBootVersion
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.4.RELEASE'
+
 }
 
