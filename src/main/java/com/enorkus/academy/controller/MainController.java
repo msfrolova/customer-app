@@ -1,12 +1,9 @@
 package com.enorkus.academy.controller;
 
 import com.enorkus.academy.entity.Customer;
-import com.enorkus.academy.repository.CustomerRepository;
 import com.enorkus.academy.repository.CustomerService;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

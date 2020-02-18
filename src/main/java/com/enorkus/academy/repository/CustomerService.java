@@ -18,24 +18,9 @@ public class CustomerService {
 
     public void insertCustomer(Customer customer) {
 
-        String lastName = customer.getLastName();
-        String firstName = customer.getFirstName();
-        String personalNumber = customer.getPersonalNumber();
-
         new CustomerValidator().validateCustomer(customer);
 
-        if (personalNumber.length() > 4) {
-            personalNumber = personalNumber.substring(0, 4) + "-" + personalNumber.substring(4);
-        }
-
-        if (firstName.length() > 1) {
-            firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
-        }
-        if (lastName.length() > 1) {
-            lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
-        }
-
-        Customer newCustomer = new Customer.CustomerBuilder(firstName, lastName, personalNumber)
+        Customer newCustomer = new Customer.CustomerBuilder(formatName(customer.getFirstName()), formatName(customer.getLastName()), formatPersonalNumber(customer.getPersonalNumber()))
                 .withMiddleName(customer.getMiddleName())
                 .withAge(customer.getAge())
                 .withCountryCode(customer.getCountryCode())
@@ -48,6 +33,21 @@ public class CustomerService {
 
         customerRepository.insert(newCustomer);
 
+    }
+
+    public String formatName(String name) {
+
+        if (name.length() > 1) {
+            return name.substring(0, 1).toUpperCase() + name.substring(1);
+        }
+        return name;
+    }
+
+    public String formatPersonalNumber(String personalNumber) {
+        if (personalNumber.length() > 4) {
+            return personalNumber.substring(0, 4) + "-" + personalNumber.substring(4);
+        }
+        return personalNumber;
     }
 
     public void deleteCustomer(String customerId) {

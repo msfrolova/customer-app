@@ -3,7 +3,6 @@ package com.enorkus.academy.repository;
 import com.enorkus.academy.entity.Customer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
